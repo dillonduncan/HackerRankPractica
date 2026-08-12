@@ -6,8 +6,10 @@ namespace HackerRankPractica
     {
         static void Main(string[] args)
         {
-            RepasoDatosLINQ repaso = new RepasoDatosLINQ();
-            repaso.Ejecutar();
+            //RepasoDatosLINQ repaso = new RepasoDatosLINQ();
+            //repaso.Ejecutar();
+            Basicos basico = new Basicos();
+            basico.Ejercicio();
         }
     }
 }
