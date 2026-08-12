@@ -31,7 +31,25 @@
             var anonimos = mediocampistas.Select(j => new Anonimo(j.Nombre, (j.Valoracion + j.Velocidad + j.Tiro) / 3));
             anonimos.ToList().ForEach(a => Console.WriteLine($"{a.Nombre} - {a.Potencial}"));
 
+            //Analisis de plantilla
+            Console.WriteLine("\nAnalisis de Plantilla:");
+            var analisis = plantilla.GroupBy(j => j.Equipo).ToList();
+            analisis.ForEach(g =>
+            {
+                Console.WriteLine($"Equipo: {g.Key}");
+                Console.WriteLine($"Cantidad de jugadores: {g.Count()}");
+                Console.WriteLine($"Valoracion promedio: {g.Average(j => j.Valoracion):F2}");
+            });
 
+            //Evaluaciones Rapidas
+            Console.WriteLine("\nEvaluaciones Rapidas:");
+            bool todosDefensasMayor70 = plantilla
+                .Where(j => j.Posicion == "DEF")
+                .All(j => j.Valoracion > 70);
+            Console.WriteLine($"¿Todos los defensas tienen valoración > 70?: {todosDefensasMayor70} \n");
+
+            bool jugadorVelSup90 = plantilla.Any(j => j.Velocidad > 90);
+            Console.WriteLine($"¿Existe algún jugador con velocidad > 90?: {jugadorVelSup90} \n");
         }
 
     }
